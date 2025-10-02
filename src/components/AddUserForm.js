@@ -24,23 +24,31 @@ export default function AddUserForm({ addUser }) {
   };
 
   return (
-    <div style={{ padding: 10 }}>
-      <h2>Add User</h2>
-      {error && <p style={{ color: "red" }}>(error)</p>}
-      <form onSubmit={handleSubmit}>
-        <input
-          placeholder="Name"
-          value={name}
-          onChange={(event) => setName(event.target.value)}
-        />
-        <br />
-        <input
-          placeholder="Email"
-          value={email}
-          onChange={(event) => setEmail(event.target.value)}
-        />
-        <br />
-        <button type="submit">Add User</button>
+    <div className="container mt-4 d-flex flex-column align-items-center">
+      <h2 className="mb-3 w-50">Add User</h2>
+      {error && <div className="alert alert-danger">(error)</div>}
+      <form onSubmit={handleSubmit} className="card p-4 shadow-sm w-50">
+        <div className="mb-3">
+          <label className="form-label">Name</label>
+          <input
+            type="text"
+            className="form-control"
+            placeholder="Name"
+            value={name}
+            onChange={(event) => setName(event.target.value)}
+          />
+        </div>
+        <div className="mb-3">
+          <label className="form-label">Email</label>
+          <input
+            type="email"
+            className="form-control"
+            placeholder="Email"
+            value={email}
+            onChange={(event) => setEmail(event.target.value)}
+          />
+        </div>
+        <button type="submit" className="btn btn-primary">Add User</button>
       </form>
     </div>
   );
