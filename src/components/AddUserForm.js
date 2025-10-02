@@ -4,6 +4,8 @@ import { useNavigate } from "react-router-dom";
 export default function AddUserForm({ addUser }) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [address, setAddress] = useState("");
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
@@ -17,6 +19,8 @@ export default function AddUserForm({ addUser }) {
       id: Math.random(),
       name,
       email,
+      phone,
+      address,
       company: { name: "Link Plus" },
     };
     addUser(newUser);
@@ -26,14 +30,14 @@ export default function AddUserForm({ addUser }) {
   return (
     <div className="container mt-4 d-flex flex-column align-items-center">
       <h2 className="mb-3 w-50">Add User</h2>
-      {error && <div className="alert alert-danger">(error)</div>}
+      {error && <div className="alert alert-danger">{error}</div>}
       <form onSubmit={handleSubmit} className="card p-4 shadow-sm w-50">
         <div className="mb-3">
           <label className="form-label">Name</label>
           <input
             type="text"
             className="form-control"
-            placeholder="Name"
+            placeholder="Name*"
             value={name}
             onChange={(event) => setName(event.target.value)}
           />
@@ -43,9 +47,29 @@ export default function AddUserForm({ addUser }) {
           <input
             type="email"
             className="form-control"
-            placeholder="Email"
+            placeholder="Email*"
             value={email}
             onChange={(event) => setEmail(event.target.value)}
+          />
+        </div>
+        <div className="mb-3">
+          <label className="form-label">Phone</label>
+          <input
+            type="text"
+            className="form-control"
+            placeholder="Phone"
+            value={phone}
+            onChange={(event) => setPhone(event.target.value)}
+          />
+        </div>
+        <div className="mb-3">
+          <label className="form-label">Address</label>
+          <input
+            type="text"
+            className="form-control"
+            placeholder="Address"
+            value={address}
+            onChange={(event) => setAddress(event.target.value)}
           />
         </div>
         <button type="submit" className="btn btn-primary">Add User</button>

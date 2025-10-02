@@ -35,14 +35,6 @@ export default function UserDetails({ users }) {
           </p>
 
           <p className="card-text">
-            <i className="bi bi-globe2 text-info me-2"></i>
-            <strong>Website:</strong>{" "}
-            <a href={`http://${user.website}`} target="_blank" rel="noreferrer">
-              {user.website}
-            </a>
-          </p>
-
-          <p className="card-text">
             <i className="bi bi-geo-alt-fill text-danger me-2"></i>
             <strong>Address:</strong> {user.address?.street},{" "}
             {user.address?.city}
