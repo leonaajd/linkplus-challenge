@@ -11,22 +11,39 @@ export default function UserList({ users }) {
   );
 
   return (
-    <div style={{ padding: 10 }}>
-      <h2>Users</h2>
+    <div className="container mt-4">
+      <h2 className="mb-3">Users</h2>
       <input
+        type="text"
+        className="form-control mb-3"
         placeholder="Search by name or email"
         value={search}
         onChange={(element) => setSearch(element.target.value)}
       />
-      <ul>
-        {filtered.map((user) => (
-          <li key={user.id}>
-            <Link to={`/user/${user.id}`}>
-              {user.name} - {user.email} ({user.company?.name})
-            </Link>
-          </li>
-        ))}
-      </ul>
+      <table className="table table-striped table-hover">
+        <thead className="table-dark">
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Company</th>
+            <th>Details</th>
+          </tr>
+        </thead>
+        <tbody>
+          {filtered.map((user) => (
+            <tr key={user.id}>
+              <td>{user.name}</td>
+              <td>{user.email}</td>
+              <td>{user.company.name}</td>
+              <td>
+                <Link to={`/user/${user.id}`} className="btn btn-sm btn-success">
+                View user
+                </Link>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 }
